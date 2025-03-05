@@ -9,181 +9,94 @@
         
         <style>
             :root {
-                --violet-darkest: #36175e;
-                --violet-dark: #553285;
-                --violet-medium: #7b52ab;
-                --violet-light: #9768d1;
+                --navy-blue: #001f3f; /* Navy Blue */
+                --gold: #FFD700; /* Gold */
+                --light-gray: #f8f9fa; /* Light Gray for contrast */
+                --white: #ffffff; /* White */
+            }
+
+            body {
+                background-color: var(--light-gray);
+                color: var(--navy-blue);
+                font-family: 'Arial', sans-serif;
+            }
+
+            .navbar {
+                background: var(--navy-blue);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-brand {
+                color: var(--gold) !important;
+                font-weight: bold;
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--white) !important;
+                transition: color 0.3s;
+            }
+
+            .navbar-nav .nav-link:hover {
+                color: var(--gold) !important;
             }
 
             .welcome-section {
-                background: linear-gradient(135deg, var(--violet-darkest) 0%, var(--violet-dark) 100%);
-                color: white;
-                position: relative;
-                overflow: hidden;
+                background: var(--navy-blue);
+                color: var(--white);
+                padding: 100px 0;
+                text-align: center;
+                border-radius: 0 0 20px 20px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             }
-            .welcome-section::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url('path/to/pattern.svg');
-                opacity: 0.1;
+
+            .welcome-text {
+                font-size: 2.5rem;
+                font-weight: 600;
             }
+
             .text-gradient {
-                background: none !important;
-                -webkit-background-clip: initial !important;
-                -webkit-text-fill-color: #E8E8E8 !important;
-                font-weight: bold !important;
-            }
-            .navbar {
-                background: rgba(85, 50, 133, 0.1);
-                backdrop-filter: blur(10px);
-            }
-            .btn-custom {
-                background: linear-gradient(135deg, #4B0082 0%, #1E90FF 100%);  /* Indigo to Dodger Blue */
-                color: white;
-                padding: 0.75rem 1.5rem;
-                border-radius: 0.75rem;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                display: inline-flex;
-                align-items: center;
-                margin: 0 1rem;
-            }
-            .btn-custom:hover {
-                background: linear-gradient(135deg, #1E90FF 0%, #4B0082 100%);  /* Reverse gradient on hover */
-                color: white;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(75, 0, 130, 0.3);
-            }
-            .btn-custom i {
-                margin-right: 0.5rem;
-            }
-            .navbar-toggler {
-                background-color: rgba(255, 255, 255, 0.9);
-                border: none;
-                padding: 0.5rem;
-                border-radius: 0.5rem;
-            }
-            .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2885, 50, 133, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-            }
-            @media (max-width: 991.98px) {
-                .navbar-collapse {
-                    background: rgba(255, 255, 255, 0.95);
-                    padding: 1rem;
-                    border-radius: 1rem;
-                    margin-top: 1rem;
-                }
-                
-                .nav-item {
-                    margin: 0.5rem 0;
-                }
-                
-                .btn-custom {
-                    width: 100%;
-                    justify-content: center;
-                }
-            }
-            .btn-primary {
-                background: linear-gradient(135deg, var(--violet-medium) 0%, var(--violet-dark) 100%);
-                color: white;
-                border: none;
-                transition: all 0.3s ease;
-            }
-            
-            .btn-primary:hover {
-                background: linear-gradient(135deg, var(--violet-light) 0%, var(--violet-medium) 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(85, 50, 133, 0.2);
-            }
-            
-            .btn-danger {
-                background: linear-gradient(135deg, #dc3545 0%, var(--violet-dark) 100%);
-                color: white;
-                border: none;
-                transition: all 0.3s ease;
-            }
-            
-            .btn-danger:hover {
-                background: linear-gradient(135deg, #dc3545 0%, var(--violet-medium) 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(85, 50, 133, 0.2);
-            }
-            
-            .btn-edit {
-                background: linear-gradient(135deg, var(--violet-medium) 0%, var(--violet-dark) 100%);
-                color: white;
-                border: none;
-                padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
-                transition: all 0.3s ease;
-            }
-            
-            .btn-edit:hover {
-                background: linear-gradient(135deg, var(--violet-light) 0%, var(--violet-medium) 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(85, 50, 133, 0.2);
-                color: white;
-            }
-            
-            .btn-delete {
-                background: linear-gradient(135deg, #dc3545 0%, var(--violet-dark) 100%);
-                color: white;
-                border: none;
-                padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
-                transition: all 0.3s ease;
-            }
-            
-            .btn-delete:hover {
-                background: linear-gradient(135deg, #dc3545 0%, var(--violet-medium) 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(85, 50, 133, 0.2);
-                color: white;
-            }
-            
-            .btn-enroll {
-                background: linear-gradient(135deg, var(--violet-medium) 0%, var(--violet-dark) 100%);
-                color: white;
-                border: none;
-                padding: 0.75rem 1.5rem;
-                border-radius: 0.75rem;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                display: inline-flex;
-                align-items: center;
-            }
-            
-            .btn-enroll:hover {
-                background: linear-gradient(135deg, var(--violet-light) 0%, var(--violet-medium) 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(85, 50, 133, 0.2);
-                color: white;
-            }
-            .navbar-brand {
-                color: #E8E8E8 !important;
+                background: linear-gradient(135deg, var(--gold) 0%, var(--white) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 3rem;
                 font-weight: bold;
             }
-            .welcome-text {
-                background: none !important;
-                -webkit-background-clip: initial !important;
-                -webkit-text-fill-color: #E8E8E8 !important;  /* Dirty white color */
-                font-weight: 600 !important;  /* Slightly bold (600) instead of full bold (700) */
+
+            .btn-custom {
+                background: var(--gold);
+                color: var(--navy-blue);
+                padding: 0.75rem 1.5rem;
+                border-radius: 0.5rem;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                margin: 0.5rem;
+            }
+
+            .btn-custom:hover {
+                background: var(--navy-blue);
+                color: var(--gold);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            }
+
+            @media (max-width: 768px) {
+                .welcome-text {
+                    font-size: 2rem;
+                }
+
+                .text-gradient {
+                    font-size: 2.5rem;
+                }
             }
         </style>
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand fs-3" href="/">
-                    <span class="font-weight-bold">Student Information System</span>
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -226,36 +139,30 @@
 
         <!-- Main Section -->
         <header class="welcome-section min-vh-100">
-            <div class="container position-relative z-index-2">
-                <div class="row min-vh-100 align-items-center">
-                    <div class="col-lg-8 text-center mx-auto">
-                        <h1 class="welcome-text mb-2 mt-5">Welcome to</h1>
-                        <h1 class="text-gradient display-3 font-weight-bolder mb-4">
-                            Student Information System
-                        </h1>
-                        <p class="text-white-50 lead mb-5">
-                        This Laravel-based SIS manages students, subjects, enrollments, and grades with secure access.
-                        </p>
-                        @auth
-                            @if(Auth::user()->user_type === 'student')
-                                <a href="{{ route('student.dashboard') }}" class="btn btn-custom btn-lg text-white mb-0 me-2">
-                                    <i class="fas fa-tachometer-alt me-2"></i>
-                                    Go to Dashboard
-                                </a>
-                            @else
-                                <a href="{{ route('dashboard') }}" class="btn btn-custom btn-lg text-white mb-0 me-2">
-                                    <i class="fas fa-tachometer-alt me-2"></i>
-                                    Go to Dashboard
-                                </a>
-                            @endif
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-custom btn-lg text-white mb-0 me-2">
-                                <i class="fas fa-sign-in-alt me-2"></i>
-                                Get Started
-                            </a>
-                        @endguest
-                    </div>
-                </div>
+            <div class="container">
+                <h1 class="welcome-text">Welcome to</h1>
+                <h1 class="text-gradient">Student Information System</h1>
+                <p class="lead mb-5">
+                    This Laravel-based SIS manages students, subjects, enrollments, and grades with secure access.
+                </p>
+                @auth
+                    @if(Auth::user()->user_type === 'student')
+                        <a href="{{ route('student.dashboard') }}" class="btn btn-custom btn-lg">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Go to Dashboard
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard') }}" class="btn btn-custom btn-lg">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Go to Dashboard
+                        </a>
+                    @endif
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-custom btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        Get Started
+                    </a>
+                @endguest
             </div>
         </header>
 
