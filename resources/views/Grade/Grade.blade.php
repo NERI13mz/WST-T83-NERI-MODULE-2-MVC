@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Student Grades</h6>
+                        <h6 class="gradient-title">Student Grades</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -283,12 +283,28 @@ $(document).ready(function() {
         align-items: center !important;
         justify-content: center !important;
         margin: 4px !important;
-        border-radius: 4px !important;
-        color: white !important;
-        pointer-events: auto !important;
-        user-select: none !important;
-        position: relative !important;
-        background-clip: padding-box !important;
+        border-radius: 8px !important;
+        border: 2px solid var(--gold) !important;
+        background: var(--navy-blue) !important;
+        color: var(--gold) !important;
+    }
+
+    .subject-btn.bg-success {
+        background: var(--gold) !important;
+        color: var(--navy-blue) !important;
+        border-color: var(--gold) !important;
+    }
+
+    .subject-btn.bg-danger {
+        background: rgba(220, 38, 38, 0.1) !important;
+        color: #dc2626 !important;
+        border-color: #dc2626 !important;
+    }
+
+    .subject-btn.bg-warning {
+        background: rgba(255, 215, 0, 0.1) !important;
+        color: var(--gold) !important;
+        border-color: var(--gold) !important;
     }
 
     /* Ensure text and content stability */
@@ -343,15 +359,21 @@ $(document).ready(function() {
 
     /* Icon button styles */
     .btn-icon {
-        width: 32px !important;
-        height: 32px !important;
-        padding: 0 !important;
-        min-width: unset !important;
-        border-radius: 8px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0 4px !important;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--gold);
+        background: var(--navy-blue) !important;
+        border-radius: 10px;
+        color: var(--gold);
+    }
+
+    .btn-icon:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
     }
 
     .btn-icon i {
@@ -428,13 +450,16 @@ $(document).ready(function() {
     }
 
     /* Card header styling */
-    .card-header h6 {
-        color: white !important;
+    .card-header {
+        background: var(--navy-blue) !important;
+        padding: 1.25rem !important;
+        border-radius: 15px 15px 0 0;
     }
 
-    /* Card header background */
-    .card-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
+    .card-header h6 {
+        color: var(--white) !important;
+        font-weight: 500;
+        font-size: 1.1rem;
     }
 
     /* Add spacing between action buttons */
@@ -445,42 +470,49 @@ $(document).ready(function() {
 
     /* Add this style to override SweetAlert2 default styles */
     .swal2-confirm {
-        background-color: #800000 !important;
-        border-color: #800000 !important;
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold) !important;
+        color: var(--gold) !important;
     }
 
     .swal2-confirm:hover {
-        background-color: #600000 !important;
-        border-color: #600000 !important;
+        background: var(--gold) !important;
+        color: var(--navy-blue) !important;
     }
 
     /* DataTables Custom Styling */
     .dataTables_wrapper {
-        padding: 20px;
+        padding: 1.5rem;
     }
 
-    .dataTables_length {
+    /* Length Control - Single Implementation */
+    #gradesTable_length {
         margin-bottom: 15px;
     }
 
-    .dataTables_length label {
+    #gradesTable_length label {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         margin: 0;
         font-size: 0.875rem;
         white-space: nowrap;
+        color: var(--navy-blue);
+        font-weight: 500;
     }
 
-    .dataTables_length select {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 6px 30px 6px 10px;
-        margin: 0;
-        background-color: white;
-        height: 38px;
+    #gradesTable_length select {
+        width: 80px;
+        height: 36px;
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+        margin: 0 0.5rem;
         font-size: 0.875rem;
-        min-width: 80px;
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        background-color: transparent;
+        color: var(--navy-blue);
+        cursor: pointer;
+        appearance: auto;
     }
 
     .dataTables_wrapper .row:first-child {
@@ -508,23 +540,30 @@ $(document).ready(function() {
     }
 
     .paginate_button {
-        padding: 8px 12px;
+        min-width: 36px;
+        height: 36px;
+        padding: 0.375rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        background-color: transparent;
+        color: var(--navy-blue);
         margin: 0 2px;
-        border-radius: 4px;
         cursor: pointer;
-        background: transparent;
-        border: none;
-        color: #333;
+        transition: all 0.2s ease;
     }
 
     .paginate_button.current {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
+        background: var(--navy-blue) !important;
+        color: var(--gold) !important;
+        border-color: var(--navy-blue) !important;
     }
 
-    .paginate_button:hover:not(.current) {
-        background: white !important;
-        color: #4C1D95;
+    .paginate_button:hover:not(.current):not(.disabled) {
+        background: var(--gold) !important;
+        color: var(--navy-blue) !important;
     }
 
     .paginate_button.disabled {
@@ -541,14 +580,13 @@ $(document).ready(function() {
     }
 
     .modal-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border: none;
+        background: var(--navy-blue);
+        border-bottom: 2px solid var(--gold);
         padding: 1.5rem;
     }
 
     .modal-title {
-        color: white;
+        color: var(--white);
         font-weight: 500;
     }
 
@@ -565,14 +603,11 @@ $(document).ready(function() {
     .modal-footer .btn {
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
     }
 
     /* Form styling */
     .form-label {
-        color: #4B5563;
+        color: var(--navy-blue);
         font-weight: 500;
     }
 
@@ -583,8 +618,8 @@ $(document).ready(function() {
     }
 
     .form-control:focus {
-        border-color: #4C1D95;
-        box-shadow: 0 0 0 2px rgba(76, 29, 149, 0.1);
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
     }
 
     /* Modal footer button styles */
@@ -693,6 +728,52 @@ $(document).ready(function() {
 
     .subject-btn:hover .delete-grade-btn {
         opacity: 1 !important;
+    }
+
+    /* Search Control */
+    .dataTables_filter,
+    #gradesTable_filter {
+        margin-left: auto;
+    }
+
+    .dataTables_filter label,
+    #gradesTable_filter label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0;
+        color: var(--navy-blue);
+        font-weight: 500;
+    }
+
+    .dataTables_filter input,
+    #gradesTable_filter input {
+        width: 220px;
+        height: 36px;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        background-color: transparent;
+        color: var(--navy-blue);
+    }
+
+    /* Gold Gradient Text Effect */
+    .gradient-title {
+        background: linear-gradient(45deg, var(--gold), #FFA500, var(--gold-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .gradient-title:hover {
+        background: linear-gradient(45deg, var(--gold-dark), #FFA500, var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
     }
 </style>
 

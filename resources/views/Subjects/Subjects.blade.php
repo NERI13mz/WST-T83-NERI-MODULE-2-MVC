@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-4 d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <h6 class="mb-0">Subject Lists</h6>
+                            <h6 class="mb-0 gradient-title">Subject Lists</h6>
                         </div>
                         <button type="button" class="btn bg-gradient-primary btn-icon" 
                                 data-bs-toggle="modal" 
@@ -341,215 +341,174 @@ document.getElementById('editSubjectForm').addEventListener('submit', function(e
 @endpush
 
 <style>
-    /* Add Subject Button Styling */
-    .card-header .btn.bg-gradient-primary {
-        background: var(--gray-light);
-        color: var(--dark);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 0.75rem 1.5rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-    .card-header .btn.bg-gradient-primary:hover {
-        background: linear-gradient(310deg, var(--primary-orange), var(--primary-yellow));
-        color: var(--light);
-        border: none;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(234, 88, 12, 0.25);
-    }
-
-    /* Warning Button (Edit) */
-    .btn.bg-gradient-warning {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn.bg-gradient-warning:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(92, 33, 182, 0.3);
-    }
-
-    /* Danger Button (Delete) */
-    .btn.bg-gradient-danger {
-        background: linear-gradient(310deg, #dc2626, #ef4444);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn.bg-gradient-danger:hover {
-        background: linear-gradient(310deg, #ef4444, #dc2626);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-    }
-
-    /* Keep icon color white for both buttons */
-    .btn.bg-gradient-warning i,
-    .btn.bg-gradient-danger i {
-        color: white;
-    }
-
-    /* Small Button Variants */
-    .btn-sm {
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
-        line-height: 1.5;
-    }
-
-    /* Icon Styling */
-    .btn i {
-        font-size: 0.875rem;
-    }
-
-    /* Add spacing between buttons */
-    td .btn + form {
-        margin-left: 0.5rem;
-    }
-
-    .px-3 {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-
-    .me-2 {
-        margin-right: 0.5rem !important;
-    }
-
-    /* Card header styling */
-    .card-header .mb-0 {
-        color: white !important;
-    }
-
-    /* Card header background */
+    /* Card and Header Styling */
     .card-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        padding: 1rem;
+        background: var(--navy-blue) !important;
+        padding: 1.25rem !important;
+        border-radius: 15px 15px 0 0;
     }
 
-    /* Add spacing and alignment */
-    .card-header .d-flex {
-        align-items: center;
-    }
-
-    /* Icon-only button styles */
-    .btn-icon {
-        width: 32px !important;
-        height: 32px !important;
-        padding: 0 !important;
-        min-width: unset !important;
-        border-radius: 8px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0 4px !important;
-    }
-
-    .btn-icon i {
-        font-size: 14px !important;
-        margin: 0 !important;
-    }
-
-    /* Modal footer button styles */
-    .modal-footer .btn-icon {
-        width: 38px !important;
-        height: 38px !important;
-    }
-
-    .modal-footer .btn-icon i {
-        font-size: 16px !important;
-    }
-
-    /* Secondary button style */
-    .btn.btn-secondary.btn-icon {
-        background: #6B7280 !important;
-        color: white !important;
-    }
-
-    .btn.btn-secondary.btn-icon:hover {
-        background: #4B5563 !important;
-    }
-
-    /* Modal styling */
-    .modal-content {
-        border: none;
-        border-radius: 1rem;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .modal-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-        border-bottom: none;
-        padding: 1.5rem;
-    }
-
-    .modal-title {
-        color: white;
+    .card-header h6 {
+        color: var(--white) !important;
         font-weight: 500;
+        font-size: 1.1rem;
     }
 
-    .modal-header .btn-close {
-        background-color: white;
-        opacity: 0.8;
-        padding: 0.5rem;
-        margin: 0;
-    }
-
-    .modal-header .btn-close:hover {
-        opacity: 1;
-    }
-
-    .modal-body {
-        padding: 1.5rem;
-    }
-
-    .modal-footer {
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-    }
-
-    /* Form styling */
-    .form-label {
-        color: #4B5563;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-    }
-
-    .form-control {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 0.5rem;
-        padding: 0.75rem;
-        transition: all 0.3s ease;
-    }
-
-    .form-control:focus {
-        border-color: #4C1D95;
-        box-shadow: 0 0 0 2px rgba(76, 29, 149, 0.1);
-    }
-
-    /* Primary button (Add/Save) - Violet theme */
+    /* Add Button Styling */
     .btn.bg-gradient-primary {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border: none;
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
         transition: all 0.3s ease;
     }
 
     .btn.bg-gradient-primary:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95);
+        background: var(--gold) !important;
+        color: var(--navy-blue);
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
     }
 
-    /* Keep icon color white */
-    .btn.bg-gradient-primary i {
-        color: white;
+    /* Action Buttons */
+    .btn-icon {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--gold);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    /* Edit Button */
+    .btn.bg-gradient-warning {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+    }
+
+    .btn.bg-gradient-warning i {
+        color: var(--gold);
+    }
+
+    .btn.bg-gradient-warning:hover {
+        background: var(--gold) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    }
+
+    .btn.bg-gradient-warning:hover i {
+        color: var(--navy-blue);
+    }
+
+    /* Delete Button */
+    .btn.bg-gradient-danger {
+        background: var(--navy-blue) !important;
+        border: 2px solid #dc2626;
+    }
+
+    .btn.bg-gradient-danger i {
+        color: #dc2626;
+    }
+
+    .btn.bg-gradient-danger:hover {
+        background: #dc2626 !important;
+        border-color: #dc2626;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    .btn.bg-gradient-danger:hover i {
+        color: var(--white);
+    }
+
+    /* Status Badge */
+    .badge.bg-gradient-success {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+        font-weight: 500;
+    }
+
+    .badge.bg-gradient-warning {
+        background: rgba(255, 215, 0, 0.2) !important;
+        color: var(--gold);
+        font-weight: 500;
+    }
+
+    /* Modal Styling */
+    .modal-header {
+        background: var(--navy-blue);
+        border-bottom: 2px solid var(--gold);
+    }
+
+    .modal-title {
+        color: var(--white);
+        font-weight: 500;
+    }
+
+    .modal-header .btn-close {
+        color: var(--white);
+        opacity: 0.8;
+    }
+
+    /* Form Controls */
+    .form-label {
+        color: var(--navy-blue);
+        font-weight: 500;
+    }
+
+    .form-control:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
+    }
+
+    /* Table Styling */
+    .table thead th {
+        color: var(--navy-blue);
+        font-weight: 600;
+        border-bottom: 2px solid var(--gold);
+    }
+
+    /* Modal Footer Buttons */
+    .modal-footer .btn-secondary {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .modal-footer .btn-secondary:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+    }
+
+    .modal-footer .btn-primary {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .modal-footer .btn-primary:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+    }
+
+    /* Gold Gradient Text Effect */
+    .gradient-title {
+        background: linear-gradient(45deg, var(--gold), #FFA500, var(--gold-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .gradient-title:hover {
+        background: linear-gradient(45deg, var(--gold-dark), #FFA500, var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
     }
 </style>
 

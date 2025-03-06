@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Available Students</h6>
+                        <h6 class="gradient-title">Pending Students</h6>
                        
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -59,7 +59,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Enrolled Students</h6>
+                        <h6 class="gradient-title">Enrolled Students</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -184,268 +184,190 @@
 </div>
 
 <style>
-    .bg-gradient-warning {
-        background: linear-gradient(310deg, #ea580c, #facc15);
-        color: white;
-        border: none;
-    }
-    
-    .bg-gradient-warning:hover {
-        background: linear-gradient(310deg, #c2410c, #eab308);
-        transform: translateY(-1px);
-    }
-
-    .bg-gradient-primary {
-        background: linear-gradient(310deg, #ea580c, #facc15);
-        color: white;
-        border: none;
-    }
-
-    .bg-gradient-primary:hover {
-        background: linear-gradient(310deg, #c2410c, #eab308);
-        transform: translateY(-1px);
-    }
-
-    .badge.bg-primary {
-        background: linear-gradient(310deg, #ea580c, #facc15) !important;
-    }
-
-    /* Enroll Button Styling */
-    .btn.bg-gradient-warning {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn.bg-gradient-warning:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3);
-    }
-
-    /* Keep icon color white */
-    .btn.bg-gradient-warning i {
-        color: white;
-    }
-
-    /* Manage Subjects Button - Violet theme */
-    .btn.bg-gradient-primary {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn.bg-gradient-primary:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3);
-    }
-
-    /* Subject Badge Styling */
-    .badge.bg-primary {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6) !important;
-        color: white;
-        border: none;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.75rem;
-        font-weight: 500;
-        margin: 0.25rem;
-        transition: all 0.3s ease;
-    }
-
-    .badge.bg-primary:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3);
-    }
-
-    /* Card header styling */
-    .card-header h6 {
-        color: white !important;
-    }
-
-    /* Card header background */
+    /* Card and Header Styling */
     .card-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
+        background: var(--navy-blue) !important;
+        padding: 1.25rem !important;
+        border-radius: 15px 15px 0 0;
     }
 
-    /* Danger Button (Unenroll) */
-    .btn.bg-gradient-danger {
-        background: linear-gradient(310deg, #dc2626, #ef4444);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
+    .card-header h6 {
+        color: var(--white) !important;
+        font-weight: 500;
+        font-size: 1.1rem;
     }
 
-    .btn.bg-gradient-danger:hover {
-        background: linear-gradient(310deg, #ef4444, #dc2626);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-    }
-
-    /* Button spacing */
-    .ms-2 {
-        margin-left: 0.5rem !important;
-    }
-
-    /* Icon spacing */
-    .me-2 {
-        margin-right: 0.5rem !important;
-    }
-
-    /* Keep icon colors white */
-    .btn i {
-        color: white;
-    }
-
-    /* Icon Button Styling */
-    .btn.btn-sm {
-        width: 32px;
-        height: 32px;
+    /* Button Styling */
+    .btn-icon {
+        width: 36px;
+        height: 36px;
         padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .btn.btn-sm i {
-        font-size: 14px;
-    }
-
-    /* Modal Header Styling */
-    .modal-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-    }
-
-    .modal-header .btn-close {
-        filter: brightness(0) invert(1);
-    }
-
-    .modal-title i {
-        color: white;
-    }
-
-    /* Light button icon color */
-    .btn.bg-light i {
-        color: #344767;
-    }
-
-    .btn.bg-light:hover i {
-        color: #344767;
-    }
-
-    /* Action buttons container */
-    td .btn-icon + .btn-icon {
-        margin-left: 8px;
-    }
-
-    /* Hover effects for action buttons */
-    .btn-icon.bg-gradient-warning:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3);
-    }
-
-    .btn-icon.bg-gradient-danger:hover {
-        background: linear-gradient(310deg, #ef4444, #dc2626);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-    }
-
-    /* Ensure icons are centered */
-    .btn-icon i {
-        margin: 0 !important;
-        font-size: 14px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    /* Base button styles */
-    .btn {
+        border: 2px solid var(--gold);
+        background: var(--navy-blue) !important;
+        border-radius: 10px;
         transition: all 0.3s ease;
-        border: none;
     }
 
-    /* Icon button specific styles */
-    .btn-icon {
-        width: 32px !important;
-        height: 32px !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+    .btn-icon i {
+        color: var(--gold);
+        font-size: 0.9rem;
     }
 
-    /* Remove transform effects */
-    .btn:hover,
-    .btn:focus,
-    .btn:active,
-    .btn-icon:hover,
-    .btn-icon:focus,
-    .btn-icon:active {
-        transform: none !important;
+    /* Enroll Button */
+    .btn.bg-gradient-warning {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+        transition: all 0.3s ease;
     }
 
-    /* Warning/Primary button (violet theme) */
-    .btn.bg-gradient-warning,
+    .btn.bg-gradient-warning:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    }
+
+    .btn.bg-gradient-warning:hover i {
+        color: var(--navy-blue);
+    }
+
+    /* Manage Subjects Button */
     .btn.bg-gradient-primary {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6) !important;
-        color: white !important;
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
     }
 
-    .btn.bg-gradient-warning:hover,
     .btn.bg-gradient-primary:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95) !important;
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3) !important;
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+        transform: translateY(-2px);
     }
 
-    /* Danger button */
+    .btn.bg-gradient-primary:hover i {
+        color: var(--navy-blue);
+    }
+
+    /* Unenroll Button */
     .btn.bg-gradient-danger {
-        background: linear-gradient(310deg, #dc2626, #ef4444) !important;
-        color: white !important;
+        background: var(--navy-blue) !important;
+        border: 2px solid #dc2626;
+        color: #dc2626;
     }
 
     .btn.bg-gradient-danger:hover {
-        background: linear-gradient(310deg, #ef4444, #dc2626) !important;
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+        background: #dc2626 !important;
+        color: var(--white);
+        transform: translateY(-2px);
     }
 
-    /* Secondary button */
-    .btn.btn-secondary {
-        background: #6B7280 !important;
-        color: white !important;
+    /* Subject Badge */
+    .badge.bg-primary {
+        background: var(--navy-blue) !important;
+        border: 1px solid var(--gold);
+        color: var(--gold);
     }
 
-    .btn.btn-secondary:hover {
-        background: #4B5563 !important;
-        box-shadow: 0 4px 12px rgba(75, 85, 99, 0.3) !important;
+    /* Modal Styling */
+    .modal-header {
+        background: var(--navy-blue);
+        border-bottom: 2px solid var(--gold);
     }
 
-    /* Icon styles */
-    .btn i {
-        font-size: 14px !important;
-        margin: 0 !important;
+    .modal-title {
+        color: var(--white);
+        font-weight: 500;
     }
 
-    /* Button group styling */
-    .btn-group {
-        display: inline-flex;
-        gap: 0.5rem;
-        align-items: center;
+    /* Form Controls */
+    .form-label {
+        color: var(--navy-blue);
+        font-weight: 500;
     }
 
-    /* Table cell alignment */
-    .text-end {
-        text-align: right !important;
+    .form-check-input:checked {
+        background-color: var(--gold);
+        border-color: var(--gold);
     }
 
-    /* Remove old button spacing */
-    td .btn-icon + .btn-icon {
-        margin-left: 0;
+    .form-control:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
+    }
+
+    /* Table Styling */
+    .table thead th {
+        color: var(--navy-blue);
+        font-weight: 600;
+        border-bottom: 2px solid var(--gold);
+    }
+
+    /* DataTables Custom Styling */
+    .dataTables_wrapper .paginate_button.current {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold) !important;
+        color: var(--gold) !important;
+    }
+
+    .dataTables_wrapper .paginate_button:hover:not(.current):not(.disabled) {
+        background: var(--gold) !important;
+        color: var(--navy-blue) !important;
+        border-color: var(--gold);
+    }
+
+    /* SweetAlert Customization */
+    .swal2-confirm {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold) !important;
+        color: var(--gold) !important;
+    }
+
+    .swal2-confirm:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue) !important;
+    }
+
+    /* Button Group Spacing */
+    .btn-group .btn:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+
+    /* Modal Footer Buttons */
+    .modal-footer .btn {
+        padding: 0.5rem 1rem;
+    }
+
+    .modal-footer .btn-secondary {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .modal-footer .btn-secondary:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+    }
+
+    /* Gold Gradient Text Effect */
+    .gradient-title {
+        background: linear-gradient(45deg, var(--gold), #FFA500, var(--gold-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .gradient-title:hover {
+        background: linear-gradient(45deg, var(--gold-dark), #FFA500, var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
     }
 </style>
 

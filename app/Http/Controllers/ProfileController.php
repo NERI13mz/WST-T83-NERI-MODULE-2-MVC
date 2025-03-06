@@ -15,35 +15,36 @@ class ProfileController extends Controller
      /**
      * Display the user's profile form.
      */
-           public function index(){
-            return view("profile.exactProfile");
-        }
-   
+    public function index()
+    {
+        return view('profile.exactProfile');
+    }
 
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+    public function edit()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        return view('profile.exactProfile');
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
+        
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
+            'address' => ['nullable', 'string', 'max:255'],
+            'about' => ['nullable', 'string'],
+        ]);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+        $user->update($validated);
 
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('exactProfile')->with('success', 'Profile updated successfully');
     }
 
     /**

@@ -24,6 +24,7 @@
     @yield('title')
   </title>
   <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
@@ -41,16 +42,251 @@
  <!-- Icon action button -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Typography */
+    :root {
+        --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 0.95rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+    }
+
+    /* Global Font Settings */
+    body {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-base);
+        letter-spacing: -0.01em;
+    }
+
+    /* Navigation Text */
+    .nav-link-text {
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+        letter-spacing: 0;
+    }
+
+    /* Sidebar Brand */
+    .navbar-brand span {
+        font-size: var(--font-size-lg) !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.02em;
+    }
+
+    /* Page Header */
+    .page-header {
+        font-size: var(--font-size-xl);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-item {
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+    }
+
+    /* Stats and Numbers */
+    .stat-label {
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        text-transform: none;
+    }
+
+    .stat-value {
+        font-size: var(--font-size-xl);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+    }
+
+    /* User Profile */
+    .nav-user-name {
+        font-size: var(--font-size-base);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+    }
+
+    /* Responsive Typography */
+    @media (max-width: 768px) {
+        .page-header {
+            font-size: var(--font-size-lg);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-lg);
+        }
+
+        .navbar-brand span {
+            font-size: var(--font-size-base) !important;
+        }
+    }
+
+    :root {
+        --navy-blue: #001f3f; /* Navy Blue */
+        --gold: #FFD700; /* Gold */
+        --gold-dark: #B8860B; /* Darker shade of gold for gradient */
+        --light-gray: #f8f9fa; /* Light Gray for contrast */
+        --white:rgb(255, 255, 255); /* White */
+        --active-blue: #0056b3; /* New active blue color */
+        
+        /* Update font variables */
+        --font-primary: 'Inter', sans-serif;
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+    }
+
+    /* Update global font styles */
+    body {
+        font-family: var(--font-primary) !important;
+        font-weight: 400;
+        letter-spacing: -0.01em !important;
+    }
+
+    /* Update sidebar icon styles */
+    .nav-link .icon-shape {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        margin-right: 12px !important;
+    }
+
+    .nav-link .icon-shape i {
+        font-size: 14px !important;
+        color: var(--white) !important;
+    }
+
+    /* Update icon set for a more minimal look */
+    .nav-item:nth-child(1) .icon-shape i::before { content: '\f015' !important; } /* Home/Dashboard */
+    .nav-item:nth-child(2) .icon-shape i::before { content: '\f044' !important; } /* Enrollment */
+    .nav-item:nth-child(3) .icon-shape i::before { content: '\f007' !important; } /* Students */
+    .nav-item:nth-child(4) .icon-shape i::before { content: '\f02d' !important; } /* Subjects */
+    .nav-item:nth-child(5) .icon-shape i::before { content: '\f080' !important; } /* Grades */
+    .nav-item:last-child .icon-shape i::before { content: '\f2f5' !important; } /* Sign Out */
+
+    /* Update navigation text styles */
+    .nav-link-text {
+        font-size: var(--font-size-sm) !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    /* Update header title */
+    .sidenav-header .font-weight-bold {
+        font-size: var(--font-size-base) !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Update breadcrumb */
+    .breadcrumb-item {
+        font-size: var(--font-size-xs) !important;
+        font-weight: 500 !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    /* Update page title */
+    .font-weight-bolder.mb-0 {
+        font-size: var(--font-size-lg) !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    /* Active state refinements */
+    .nav-link.active {
+        background: linear-gradient(310deg, var(--gold), var(--gold-dark)) !important;
+    }
+
+    .nav-link.active .icon-shape {
+        background: var(--white) !important;
+    }
+
+    .nav-link.active .icon-shape i {
+        color: var(--navy-blue) !important;
+    }
+
+    /* Hover state refinements */
+    .nav-link:hover .icon-shape {
+        background: var(--white) !important;
+        transition: all 0.2s ease;
+    }
+
+    .nav-link:hover .icon-shape i {
+        color: var(--navy-blue) !important;
+    }
+
+    /* Update navigation text styles */
+    .nav-link-text {
+        font-size: var(--font-size-sm) !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    /* Update header styles */
+    .sidenav-header .font-weight-bold {
+        font-size: var(--font-size-lg) !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    /* Breadcrumb styling */
+    .breadcrumb-item {
+        font-size: var(--font-size-sm) !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.01em !important;
+    }
+
+    /* Page title styling */
+    .font-weight-bolder.mb-0 {
+        font-size: var(--font-size-xl) !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    /* Card header text */
+    .card-header h6 {
+        font-size: var(--font-size-base) !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.01em !important;
+    }
+
+    /* Username display */
+    .nav-item.pe-2 {
+        font-size: var(--font-size-sm) !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.01em !important;
+    }
+
+    /* Make active navigation more distinct */
+    .nav-link.active .nav-link-text {
+        font-weight: 500 !important;
+    }
+
+    /* Hover state text */
+    .nav-link:hover .nav-link-text {
+        font-weight: 500 !important;
+    }
+
     /* Sidebar background */
     .sidenav {
+        background: var(--navy-blue) !important;
         box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2) !important;
         z-index: 1000 !important;
         position: fixed !important;
     }
+
     .navbar-main {
-      
+        background: var(--navy-blue) !important;
         box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2) !important;
     }
+
     .logout-btn {
         transition: all 0.3s ease;
         border-radius: 0.5rem;
@@ -58,7 +294,7 @@
     }
 
     .logout-btn:hover {
-        background: linear-gradient(310deg, #ea580c, #facc15);
+        background: linear-gradient(310deg, var(--gold), var(--navy-blue)) !important;
     }
 
     .logout-btn:hover .icon {
@@ -80,11 +316,11 @@
 
     .logout-btn .nav-link-text {
         transition: all 0.3s ease;
-        color: #344767;
+        color: var(--white);
     }
 
     .logout-btn .color-background {
-        fill: #344767;
+        fill: var(--white);
         transition: all 0.3s ease;
     }
 
@@ -94,13 +330,12 @@
 
     /* New styles for all sidebar items */
     .nav-item .nav-link {
+        color: var(--white) !important;
         transition: all 0.3s ease;
-        border-radius: 0.5rem;
-        margin: 0 1rem;
     }
 
-    .nav-item .nav-link:not(.active):hover {
-        background: linear-gradient(310deg, var(--violet-light), var(--violet-medium));
+    .nav-item .nav-link:hover {
+        background: linear-gradient(310deg, var(--gold), var(--navy-blue)) !important;
     }
 
     .nav-item .nav-link:hover .icon {
@@ -108,13 +343,13 @@
     }
 
     .nav-item .nav-link:hover .nav-link-text {
-        color: white !important;
+        color: var(--white) !important;
         font-weight: 600;
     }
 
     .nav-item .nav-link:hover .color-background,
     .nav-item .nav-link:hover .color-background.opacity-6 {
-        fill: white !important;
+        fill: var(--white) !important;
     }
 
     .nav-item .nav-link .icon {
@@ -123,11 +358,11 @@
 
     .nav-item .nav-link .nav-link-text {
         transition: all 0.3s ease;
-        color: #344767;
+        color: var(--white);
     }
 
     .nav-item .nav-link .color-background {
-        fill: #344767;
+        fill: var(--white);
         transition: all 0.3s ease;
     }
 
@@ -138,7 +373,7 @@
      .user-name-display {
         display: flex;
         align-items: center;
-        color: #344767;
+        color: var(--white);
         padding: 0;
         cursor: default;
         pointer-events: none;
@@ -153,7 +388,7 @@
     }
 
     .sidenav-header .font-weight-bold {
-        color: white !important;
+        color: var(--white) !important;
         font-weight: 600;
     }
     /* Standardize icon sizes */
@@ -197,7 +432,7 @@
     .nav-link .icon-shape {
         width: 35px;
         height: 35px;
-        background: white;
+        background: var(--white);
         border-radius: 8px;
         display: flex;
         align-items: center;
@@ -219,12 +454,12 @@
 
     /* Active state styling */
     .nav-link.active .icon-shape {
-        background: var(--violet-medium);
+        background: var(--white) !important;
     }
 
     .nav-link.active .icon-shape i,
     .nav-link.active .icon-shape svg {
-        color: white !important;
+        color: var(--navy-blue) !important;
     }
 
     /* Sidebar Header Styling */
@@ -279,7 +514,7 @@
     }
 
     .avatar {
-        border: 2px solid #fff;
+        border: 2px solid var(--white);
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
@@ -289,7 +524,7 @@
     }
 
     .avatar-sm {
-        border: 2px solid #fff;
+        border: 2px solid var(--white);
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
@@ -383,7 +618,7 @@
     }
 
     .nav-item form button.nav-link:hover {
-        background: linear-gradient(310deg, var(--violet-medium), var(--violet-dark));
+        background: linear-gradient(310deg, var(--gold), var(--navy-blue));
     }
 
     .nav-item form button.nav-link:hover .icon {
@@ -391,7 +626,7 @@
     }
 
     .nav-item form button.nav-link:hover .nav-link-text {
-        color: white !important;
+        color: var(--white) !important;
         font-weight: 600;
     }
 
@@ -427,8 +662,8 @@
     .sidenav .nav-link .icon i,
     .sidenav .nav-link .icon svg,
     .sidenav .nav-link .color-background {
-        color: white !important;
-        fill: white !important;
+        color: var(--white) !important;
+        fill: var(--white) !important;
         transition: all 0.3s ease;
     }
 
@@ -439,14 +674,14 @@
     .sidenav .nav-link.active .icon svg,
     .sidenav .nav-link:hover .color-background,
     .sidenav .nav-link.active .color-background {
-        color: #344767 !important;
-        fill: #344767 !important;
+        color: var(--white) !important;
+        fill: var(--white) !important;
     }
 
     /* Background transitions */
     .sidenav .nav-link:hover .icon,
     .sidenav .nav-link.active .icon {
-        background: white !important;
+        background: var(--gold) !important;
     }
 
     /* Remove unwanted transitions */
@@ -457,7 +692,317 @@
 
     /* Hover effect */
     .sidenav .nav-link:hover {
-        background: linear-gradient(310deg, var(--violet-medium), var(--violet-dark));
+        background: linear-gradient(310deg, var(--gold), var(--navy-blue));
+    }
+
+    .card {
+        background: var(--white) !important;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .card-header {
+        background: linear-gradient(310deg, var(--navy-blue), var(--gold)) !important;
+        color: var(--white) !important;
+    }
+
+    /* Toggle Buttons */
+    .form-switch .form-check-input {
+        background-color: var(--navy-blue) !important;
+        border-color: var(--gold) !important;
+    }
+
+    .form-switch .form-check-input:checked {
+        background-color: var(--gold) !important;
+        border-color: var(--navy-blue) !important;
+    }
+
+    /* Navigation Active State */
+    .nav-link.active {
+        background: linear-gradient(310deg, var(--gold), var(--gold-dark)) !important;
+        color: var(--navy-blue) !important;
+    }
+
+    .nav-link.active .nav-link-text,
+    .nav-link.active i {
+        color: var(--navy-blue) !important;
+    }
+
+    /* Update the icon background for active state */
+    .nav-link.active .icon-shape {
+        background: var(--white) !important;
+    }
+
+    .nav-link.active .icon-shape i,
+    .nav-link.active .icon-shape svg {
+        color: var(--navy-blue) !important;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-item, 
+    .breadcrumb-item a {
+        color: var(--white) !important;
+    }
+
+    .breadcrumb-item.active {
+        color: var(--white) !important;
+        opacity: 1 !important;
+    }
+
+    .breadcrumb-item a.opacity-5 {
+        opacity: 0.7 !important;
+    }
+
+    /* Profile Dropdown */
+    .navbar-nav .nav-link {
+        color: var(--navy-blue) !important;
+    }
+
+    /* Icons in Sidebar */
+    .icon-shape {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: none;
+    }
+
+    .icon-shape i, .icon-shape svg {
+        color: var(--white) !important;
+        opacity: 1 !important;
+    }
+
+    .color-background {
+        fill: var(--white) !important;
+    }
+
+    /* Remove any remaining violet references */
+    .nav-item .nav-link:not(.active):hover {
+        background: linear-gradient(310deg, var(--gold), var(--navy-blue)) !important;
+    }
+
+    /* Navigation Container */
+    .navbar-main {
+        background: var(--navy-blue) !important;
+        border-radius: 16px !important;
+        margin: 1rem 1.5rem !important;
+        box-shadow: 0 4px 12px rgba(0, 31, 63, 0.15);
+    }
+
+    /* Breadcrumb Styling */
+    .breadcrumb {
+        margin: 0;
+        padding: 0;
+    }
+
+    .breadcrumb-item {
+        font-size: 0.85rem;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .breadcrumb-link {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-link:hover {
+        color: var(--gold);
+    }
+
+    .breadcrumb-item.active {
+        color: var(--white);
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Page Header */
+    .page-header {
+        background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ensure text remains visible during load */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        .page-header {
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    /* Fallback for browsers that don't support gradient text */
+    @supports not (background-clip: text) {
+        .page-header {
+            color: var(--gold);
+        }
+    }
+
+    /* User Profile Section */
+    .avatar-wrapper {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid var(--gold);
+    }
+
+    .avatar-wrapper i {
+        font-size: 1.25rem;
+        color: var(--white);
+    }
+
+    .nav-user-name {
+        color: var(--white);
+        font-size: 0.9rem;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        margin-left: 0.5rem;
+    }
+
+    /* Container Spacing */
+    .container-fluid {
+        padding: 1rem 1.75rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .navbar-main {
+            margin: 0.5rem !important;
+        }
+
+        .page-header {
+            font-size: 1.25rem;
+        }
+
+        .container-fluid {
+            padding: 0.75rem 1rem;
+        }
+    }
+
+    /* Gap Utility */
+    .gap-2 {
+        gap: 0.75rem;
+    }
+
+    /* User Profile Section */
+    .gradient-text {
+        background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 600;
+    }
+
+    /* Ensure text remains visible during load */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        .gradient-text {
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    /* Fallback for browsers that don't support gradient text */
+    @supports not (background-clip: text) {
+        .gradient-text {
+            color: var(--gold);
+        }
+    }
+
+    .nav-user-name {
+        font-size: 0.95rem;
+        font-family: 'Inter', sans-serif;
+        margin-left: 0.5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-wrapper {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid var(--gold);
+    }
+
+    /* Sidebar Icon Styling */
+    .sidenav .nav-link .icon-shape {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--gold);
+        margin-right: 1rem;
+    }
+
+    .sidenav .nav-link .icon-shape i {
+        color: var(--gold) !important;
+        font-size: 1.1rem;
+    }
+
+    /* Active State */
+    .sidenav .nav-link.active .icon-shape {
+        background: var(--gold);
+    }
+
+    .sidenav .nav-link.active .icon-shape i {
+        color: var(--navy-blue) !important;
+    }
+
+    /* Hover State */
+    .sidenav .nav-link:hover:not(.active) .icon-shape {
+        background: rgba(255, 215, 0, 0.1);
+    }
+
+    .nav-link-profile {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link-profile:hover {
+        color: var(--gold);
+    }
+
+    .nav-link-profile:hover .avatar-wrapper i {
+        color: var(--gold);
+    }
+
+    .avatar-wrapper {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--navy-blue);
+        transition: all 0.3s ease;
+    }
+
+    .avatar-wrapper i {
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    .nav-user-name {
+        font-weight: 500;
+        color: var(--navy-blue);
+    }
+
+    .nav-link-profile:hover .nav-user-name {
+        color: var(--gold);
     }
   </style>
 </head>
@@ -468,10 +1013,10 @@
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0 text-center" href="{{ route('dashboard') }}">
         <div class="d-flex flex-column align-items-center">
-            <span class="font-weight-bold" style="font-size: 1.2rem; color: #ffffff;">
+            <span class="font-weight-bold" style="font-size: 1.2rem; color: var(--white) !important;">
                 Student Information
             </span>
-            <span class="font-weight-bold" style="font-size: 1.2rem; color: #ffffff;">
+            <span class="font-weight-bold" style="font-size: 1.2rem; color: var(--white) !important;">
                 System
             </span>
         </div>
@@ -607,26 +1152,35 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">@yield('Pages')</li>
-          </ol>
-          <h6 class="font-weight-bolder mb-0">@yield('Pages')</h6>
+      <div class="container-fluid py-2 px-4">
+        <!-- Breadcrumb and Page Title -->
+        <nav aria-label="breadcrumb" class="d-flex flex-column">
+            <ol class="breadcrumb bg-transparent mb-1 pb-0 pt-1 px-0">
+                <li class="breadcrumb-item">
+                    <a class="breadcrumb-link" href="javascript:;">Pages</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    @yield('Pages')
+                </li>
+            </ol>
+            <h4 class="page-header mb-0">@yield('Pages')</h4>
         </nav>
+
+        <!-- User Profile Section -->
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
-          <ul class="navbar-nav justify-content-end">
-            <li class="nav-item pe-2 d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <div class="avatar avatar-sm position-relative">
-                  <i class="fas fa-user-circle fa-2x" style="color: #344767;"></i>
-                </div>
-              </div>
-              {{Auth::user()->name}}
-            </li>
-          </ul>
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item pe-3 d-flex align-items-center">
+                    <a href="{{ route('exactProfile') }}" class="nav-link-profile">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="avatar-wrapper">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span class="nav-user-name gradient-text">{{Auth::user()->name}}</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
       </div>
     </nav>
@@ -827,108 +1381,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Stack scripts -->
   @stack('scripts')
-  <style>
-    :root {
-        --violet-darkest: #36175e;
-        --violet-dark: #553285;
-        --violet-medium: #7b52ab;
-        --violet-light: #9768d1;
-    }
-
-    /* Main Layout */
-    .g-sidenav-show {
-        background: #f8f9fa !important;
-    }
-
-    /* Sidebar Styling */
-    .sidenav {
-        background: var(--violet-darkest);
-    }
-
-    .navbar-brand {
-        color: white !important;
-        font-weight: 600;
-    }
-
-    /* Navigation Links */
-    .nav-link {
-        color: white !important;
-        transition: all 0.3s ease;
-    }
-
-    .nav-link .nav-link-text {
-        color: white !important;
-        font-weight: 500;
-    }
-
-    .nav-link:hover, .nav-link.active {
-        background: linear-gradient(310deg, var(--violet-medium), var(--violet-dark));
-    }
-
-    /* Icons in Sidebar */
-    .icon-shape {
-        background: rgba(255, 255, 255, 0.1) !important;
-        border: none;
-    }
-
-    .icon-shape i, .icon-shape svg {
-        color: white !important;
-        opacity: 1 !important;
-    }
-
-    .color-background {
-        fill: white !important;
-    }
-
-    /* Main Content Area */
-    .main-content {
-        margin-left: 17.125rem;
-    }
-
-    /* Cards */
-    .card {
-        background: white;
-        border: none;
-        box-shadow: 0 4px 6px rgba(85, 50, 133, 0.1);
-    }
-
-    .card-header {
-        background: linear-gradient(310deg, var(--violet-medium), var(--violet-dark));
-        color: white;
-        border-radius: 12px 12px 0 0;
-    }
-
-    /* Toggle Buttons */
-    .form-switch .form-check-input {
-        background-color: var(--violet-darkest);
-        border-color: var(--violet-medium);
-    }
-
-    .form-switch .form-check-input:checked {
-        background-color: var(--violet-medium);
-        border-color: var(--violet-light);
-    }
-
-    /* Navigation Active State */
-    .nav-link.active {
-        background: var(--violet-medium) !important;
-    }
-
-    .nav-link.active .nav-link-text,
-    .nav-link.active i {
-        color: white !important;
-    }
-
-    /* Breadcrumb */
-    .breadcrumb-item, .breadcrumb-item a {
-        color: var(--violet-dark) !important;
-    }
-
-    /* Profile Dropdown */
-    .navbar-nav .nav-link {
-        color: var(--violet-dark) !important;
-    }
-  </style>
 </body>
 
 </html>

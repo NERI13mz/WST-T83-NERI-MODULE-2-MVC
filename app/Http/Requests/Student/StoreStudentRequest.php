@@ -22,7 +22,7 @@ class StoreStudentRequest extends FormRequest
                 'unique:students,email',
                 'regex:/^[0-9]{10}@student\.buksu\.edu\.ph$/'
             ],
-            'status' => 'required|in:active,inactive'
+            'status' => 'required|in:active,inactive',
         ];
     }
 

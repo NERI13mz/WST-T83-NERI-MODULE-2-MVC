@@ -4,10 +4,7 @@
     <span style="font-weight: 500;">Students</span>
 @endsection
 @section('content')
-<!-- Add these lines for DataTables -->
-<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-<!-- Add DataTables CSS and JS -->
+<!-- DataTables Resources -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -22,7 +19,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-4 d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <h6 class="mb-0">Student Lists</h6>
+                            <h6 class="mb-0 gradient-title">Student Lists</h6>
                         </div>
                         <button type="button" class="btn bg-gradient-primary btn-icon" 
                                 data-bs-toggle="modal" 
@@ -510,251 +507,250 @@ function markReadyForEnrollment(studentId) {
 @endpush
 
 <style>
-    /* Add Student/Subject Button Styling */
-    .card-header .btn.bg-gradient-primary {
-        background: var(--light);
-        color: var(--dark);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 0.75rem 1.5rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-    .card-header .btn.bg-gradient-primary:hover {
-        background: linear-gradient(310deg, var(--primary-orange), var(--primary-yellow));
-        color: var(--light);
-        border: none;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(234, 88, 12, 0.25);
-    }
-
-    .card-header .btn.bg-gradient-primary i {
-        margin-right: 0.5rem;
-    }
-
-       /* DataTables Custom Styling */
-       .dataTables_wrapper {
-        padding: 20px;
-    }
-
-    .dataTables_length {
-        margin-bottom: 15px;
-    }
-
-    .dataTables_length label {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0;
-        font-size: 0.875rem;
-        white-space: nowrap;
-    }
-
-    .dataTables_length select {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 6px 30px 6px 10px;
-        margin: 0;
-        background-color: white;
-        height: 38px;
-        font-size: 0.875rem;
-        min-width: 80px;
-    }
-
-    /* Adjust the container for better alignment */
-    .dataTables_wrapper .row:first-child {
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .dataTables_wrapper .col-md-6:first-child {
-        display: flex;
-        align-items: center;
-    }
-
-    .dataTables_info {
-        font-size: 0.875rem;
-        padding-top: 0.5rem;
-    }
-
-    .dataTables_paginate {
-        margin-top: 1rem;
-        text-align: right;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .paginate_button {
-        padding: 8px 12px;
-        margin: 0 2px;
-        border-radius: 4px;
-        cursor: pointer;
-        background: transparent;
-        border: none;
-        color: #333;
-    }
-
-    .paginate_button.current {
-        background: linear-gradient(310deg, #ea580c, #facc15);
-        color: white;
-    }
-
-    .paginate_button:hover:not(.current) {
-        background: white !important;
-        color: #ea580c;
-    }
-
-    .paginate_button.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        color: #999;
-    }
-
-    /* Table header styling */
-    .table thead th {
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 1rem;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #e9ecef;
-        text-transform: uppercase;
-        letter-spacing: 0.025em;
-    }
-
-    /* Entries text alignment */
-    .dataTables_length {
-        display: flex;
-        align-items: center;
-    }
-
-    .dataTables_length label {
-        white-space: nowrap;
-    }
-
-    /* Warning Button (Edit) and Primary Button (Save Changes) - Violet theme */
-    .btn.bg-gradient-warning,
-    .modal-footer .btn.bg-gradient-primary {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn.bg-gradient-warning:hover,
-    .modal-footer .btn.bg-gradient-primary:hover {
-        background: linear-gradient(310deg, #5B21B6, #4C1D95);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(91, 33, 182, 0.3);
-    }
-
-    /* Danger Button (Delete) - Red gradient */
-    .btn.bg-gradient-danger {
-        background: linear-gradient(310deg, #dc2626, #ef4444);
-        color: white;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn.bg-gradient-danger:hover {
-        background: linear-gradient(310deg, #ef4444, #dc2626);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-    }
-
-    /* Keep icon colors white */
-    .btn.bg-gradient-warning i,
-    .btn.bg-gradient-danger i,
-    .modal-footer .btn.bg-gradient-primary i {
-        color: white;
-    }
-
-    /* Card header styling */
-    .card-header h6 {
-        color: white !important;
-    }
-
-    /* Card header background */
+    /* Card and Header Styling */
     .card-header {
-        background: linear-gradient(310deg, #4C1D95, #5B21B6);
+        background: var(--navy-blue) !important;
+        padding: 1.25rem !important;
+        border-radius: 15px 15px 0 0;
     }
 
-    .btn-sm {
-        padding: 8px 18px !important;  /* Increase padding */
-        font-size: 14px !important;    /* Adjust font size */
-        min-width: 100px !important;   /* Set minimum width */
+    .card-header h6 {
+        color: var(--white) !important;
+        font-weight: 500;
+        font-size: 1.1rem;
     }
 
-    .btn-sm i {
-        margin-right: 8px !important;  /* Space between icon and text */
-    }
-
-    /* Add space between buttons */
-    td .btn + form {
-        margin-left: 8px !important;
-    }
-
-    .input-group-text {
-        background-color: #f8f9fa;
-        color: #6c757d;
-        border-left: none;
-    }
-
-    .input-group .form-control:focus {
-        border-right: none;
-        box-shadow: none;
-    }
-
-    .form-text {
-        font-size: 0.875em;
-        color: #6c757d;
-    }
-
-    /* Icon-only button styles */
+    /* Button Styling */
     .btn-icon {
-        width: 32px !important;
-        height: 32px !important;
-        padding: 0 !important;
-        min-width: unset !important;
-        border-radius: 8px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0 4px !important;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--gold);
+        background: var(--navy-blue) !important;
+        border-radius: 10px;
+        transition: all 0.3s ease;
     }
 
     .btn-icon i {
-        font-size: 14px !important;
-        margin: 0 !important;
-        line-height: 1 !important;
+        color: var(--gold);
+        font-size: 0.9rem;
     }
 
-    /* Remove hover transform effects */
-    .btn-icon:hover,
-    .btn-icon:focus,
-    .btn-icon:active {
-        transform: none !important;
+    /* Status Badge */
+    .badge.bg-success {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+        font-weight: 500;
     }
 
-    /* Modal footer button styles */
-    .modal-footer .btn-icon {
-        width: 38px !important;
-        height: 38px !important;
+    .badge.bg-danger {
+        background: rgba(220, 38, 38, 0.1) !important;
+        color: #dc2626;
+        border: 1px solid #dc2626;
+        font-weight: 500;
     }
 
-    .modal-footer .btn-icon i {
-        font-size: 16px !important;
+    /* Table Styling */
+    .table thead th {
+        color: var(--navy-blue);
+        font-weight: 600;
+        border-bottom: 2px solid var(--gold);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        padding: 1rem;
     }
 
-    /* Secondary button style */
-    .btn.btn-secondary.btn-icon {
-        background: #6B7280 !important;
-        color: white !important;
+    /* Action Buttons */
+    .btn.bg-gradient-warning {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
     }
 
-    .btn.btn-secondary.btn-icon:hover {
-        background: #4B5563 !important;
+    .btn.bg-gradient-warning:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    }
+
+    .btn.bg-gradient-warning:hover i {
+        color: var(--navy-blue);
+    }
+
+    .btn.bg-gradient-success {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .btn.bg-gradient-success:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+    }
+
+    .btn.bg-gradient-danger {
+        background: var(--navy-blue) !important;
+        border: 2px solid #dc2626;
+        color: #dc2626;
+    }
+
+    .btn.bg-gradient-danger:hover {
+        background: #dc2626 !important;
+        color: var(--white);
+    }
+
+    /* Modal Styling */
+    .modal-header {
+        background: var(--navy-blue);
+        border-bottom: 2px solid var(--gold);
+    }
+
+    .modal-title {
+        color: var(--white);
+        font-weight: 500;
+    }
+
+    .modal-header .btn-close {
+        color: var(--white);
+        opacity: 0.8;
+    }
+
+    /* Form Controls */
+    .form-label {
+        color: var(--navy-blue);
+        font-weight: 500;
+    }
+
+    .form-control:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
+    }
+
+    .input-group-text {
+        background: var(--navy-blue);
+        color: var(--gold);
+        border: 1px solid var(--gold);
+    }
+
+    /* Modal Footer Buttons */
+    .modal-footer .btn-secondary {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .modal-footer .btn-secondary:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+    }
+
+    .modal-footer .btn-primary {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .modal-footer .btn-primary:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue);
+    }
+
+    /* SweetAlert Customization */
+    .swal2-confirm {
+        background: var(--navy-blue) !important;
+        border: 2px solid var(--gold) !important;
+        color: var(--gold) !important;
+    }
+
+    .swal2-confirm:hover {
+        background: var(--gold) !important;
+        color: var(--navy-blue) !important;
+    }
+
+    /* DataTable Layout and Spacing */
+    .dataTables_wrapper {
+        padding: 1.5rem;
+    }
+
+    /* Show Entries Container */
+    .dataTables_length select,
+    select[name="studentsTable_length"] {
+        width: 80px;
+        height: 36px;
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+        margin: 0 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        background-color: transparent;
+        color: var(--navy-blue);
+        cursor: pointer;
+        appearance: auto;
+    }
+
+    /* Search Container */
+    .dataTables_filter input {
+        margin-left: 0.5rem;
+        width: 220px;
+        height: 36px;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        background-color: transparent;
+        color: var(--navy-blue);
+    }
+
+    /* Pagination Container */
+    .paginate_button {
+        min-width: 36px;
+        height: 36px;
+        padding: 0.375rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gold);
+        border-radius: 6px;
+        background-color: transparent;
+        color: var(--navy-blue);
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin: 0 2px;
+    }
+
+    .paginate_button.current {
+        background-color: var(--navy-blue);
+        border-color: var(--navy-blue);
+        color: var(--gold);
+    }
+
+    .paginate_button:hover:not(.current):not(.disabled) {
+        background-color: var(--gold);
+        border-color: var(--gold);
+        color: var(--navy-blue);
+    }
+
+    /* Gold Gradient Text Effect */
+    .gradient-title {
+        background: linear-gradient(45deg, var(--gold), #FFA500, var(--gold-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .gradient-title:hover {
+        background: linear-gradient(45deg, var(--gold-dark), #FFA500, var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
     }
 </style>
 

@@ -1,12 +1,12 @@
 <x-guest-layout>
     <div class="card-header text-center bg-transparent">
-        <h2 class="text-gradient font-weight-bolder mb-3">Welcome Back!</h2>
-        <p class="text-muted">Sign in to your account to continue</p>
+        <h2 class="welcome-title">Welcome</h2>
+        <p class="welcome-subtitle">Sign in to your account to continue</p>
     </div>
     
     <x-auth-session-status class="mb-4" :status="session('status')" />
     
-    <form method="POST" action="{{ route('login') }}" class="px-3">
+    <form method="POST" action="{{ route('login') }}" class="px-4">
         @csrf
         <div class="mb-4">
             <label class="form-label">Email Address</label>
@@ -37,27 +37,27 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="auth-options">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="remember" id="remember_me">
-                <label class="form-check-label text-muted" for="remember_me">
+                <label class="form-check-label" for="remember_me">
                     Remember me
                 </label>
             </div>
             @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="text-decoration-none fw-semibold" style="color: var(--violet-medium);">
+                <a href="{{ route('password.request') }}" class="forgot-password">
                     Forgot password?
                 </a>
             @endif
         </div>
 
-        <button type="submit" class="btn btn-primary w-100 mb-4">
-            <span class="fw-semibold text-white">Sign In</span>
+        <button type="submit" class="btn btn-gradient mb-4">
+            Sign In
         </button>
 
-        <p class="text-center text-muted mb-0">
+        <p class="text-center mb-0">
             Don't have an account? 
-            <a href="{{ route('register') }}" class="text-decoration-none fw-semibold" style="color: var(--violet-medium);">
+            <a href="{{ route('register') }}" class="create-account-link">
                 Create Account
             </a>
         </p>
@@ -65,33 +65,133 @@
 </x-guest-layout>
 
 <style>
-    .input-group {
+    :root {
+        --navy-blue: #001f3f;
+        --navy-light: #003366;
+        --gold: #FFD700;
+        --gold-dark: #B8860B;
+    }
+
+    .welcome-title {
+        background: linear-gradient(
+            135deg,
+            var(--navy-blue) 0%,
+            var(--navy-blue) 60%,
+            var(--gold) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        letter-spacing: -0.5px;
+        display: inline-block;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        color: var(--navy-blue);
+        opacity: 0.7;
+        letter-spacing: -0.2px;
+    }
+
+    .btn-gradient {
+        background: linear-gradient(
+            135deg,
+            var(--navy-blue) 0%,
+            var(--navy-light) 85%,
+            var(--gold-dark) 100%
+        ) !important;
+        border: none;
         position: relative;
+        overflow: hidden;
+        z-index: 1;
     }
-    
-    .password-toggle-icon {
+
+    .btn-gradient::before {
+        content: '';
         position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        z-index: 10;
-        color: #6c757d;
-        padding: 5px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg,
+            var(--navy-light) 0%,
+            var(--gold) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
     }
 
-    .password-toggle-icon:hover {
-        color: var(--violet-medium);
+    .btn-gradient:hover::before {
+        opacity: 1;
     }
 
-    /* Add padding to password input to prevent text from going under the icon */
-    input[type="password"] {
-        padding-right: 40px !important;
+    .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 31, 63, 0.3);
+        color: var(--navy-blue);
     }
-    
-    /* Remove the previous toggle-password styles if they exist */
-    .toggle-password {
-        display: none;
+
+    .input-group {
+        border: 2px solid rgba(0, 31, 63, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .input-group:hover {
+        border-color: rgba(184, 134, 11, 0.4);
+    }
+
+    .input-group:focus-within {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.15);
+    }
+
+    .input-group-text i {
+        transition: color 0.3s ease;
+    }
+
+    .input-group:focus-within .input-group-text i {
+        color: var(--gold-dark) !important;
+        opacity: 1;
+    }
+
+    .form-control:focus {
+        color: var(--navy-blue);
+        background-color: transparent;
+        border-color: transparent;
+        outline: 0;
+        box-shadow: none;
+    }
+
+    .form-check-input:checked {
+        background-color: var(--navy-blue);
+        border-color: var(--navy-blue);
+    }
+
+    .forgot-password {
+        color: var(--navy-blue);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .forgot-password:hover {
+        color: var(--gold-dark);
+        opacity: 1;
+    }
+
+    .create-account-link {
+        color: var(--gold-dark);
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .create-account-link:hover {
+        color: var(--navy-blue);
     }
 </style>
 
